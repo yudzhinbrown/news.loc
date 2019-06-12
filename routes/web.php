@@ -11,6 +11,13 @@
 |
 */
 
+
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function (){
+    Route::get('/', 'MainController@index')->name('admin.index');
+    Route::resource('/category', 'CategoryController', ['as' => 'admin']);
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
