@@ -1,7 +1,7 @@
 @extends('admin.layouts.app');
 
 @section('content')
-    <a class="btn btn-success float-right" href="{{route('admin.category.create')}}">Добавить категорию</a>
+    <a class="btn btn-success float-right" href="{{route('admin.article.create')}}">Добавить новость</a>
     <table class="table table-borderless">
         <thead>
         <tr>
@@ -11,13 +11,13 @@
         </tr>
         </thead>
         <tbody>
-        @forelse ($categories as $category)
+        @forelse ($articles as $article)
             <tr>
-                <td>{{$category->title}}</td>
-                <td>{{$category->published}}</td>
-                <td><a href="{{route('admin.category.edit', $category)}}" class="btn btn-secondary">Изменить</a></td>
+                <td>{{$article->title}}</td>
+                <td>{{$article->published}}</td>
+                <td><a href="{{route('admin.article.edit', $article)}}" class="btn btn-secondary">Изменить</a></td>
                 <td>
-                    <form action="{{route('admin.category.destroy', $category)}}" method="post">
+                    <form action="{{route('admin.article.destroy', $article)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Удалить</button>
@@ -34,7 +34,7 @@
         <tr>
             <td>
                 <ul class="pagination">
-                    {{$categories->links()}}
+                    {{$articles->links()}}
                 </ul>
             </td>
         </tr>

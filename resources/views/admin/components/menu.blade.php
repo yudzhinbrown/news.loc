@@ -4,7 +4,7 @@
             <a class="nav-link active" href="{{route('admin.category.index')}}">Категории</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="#">Новости</a>
+            <a class="nav-link active" href="{{route('admin.article.index')}}">Новости</a>
         </li>
 
     </ul>
