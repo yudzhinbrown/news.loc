@@ -14,6 +14,11 @@ class Article extends Model
     public function categories(){
         return $this->belongsToMany('App\Category');
     }
+
+    public function getShortTextAttribute(){
+        return strip_tags(Str::words($this->text, '40', '...'));
+    }
+
     public function setSlugAttribute($value){
         $this->attributes['slug'] = Str::slug($this->title . '-' . Carbon::now()->format('dmiHi'), '-');
     }

@@ -21,8 +21,8 @@ class CreateArticlesTable extends Migration
             $table->text('text')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('meta_keyword')->nullable();
-            $table->integer('viewed')->nullable();
-            $table->integer('img')->nullable();
+            $table->integer('viewed')->default(0);
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

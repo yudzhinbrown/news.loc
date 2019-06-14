@@ -14,14 +14,21 @@
         @forelse ($categories as $category)
             <tr>
                 <td>{{$category->title}}</td>
-                <td>{{$category->published}}</td>
+                <td>
+                    @if($category->published)
+                        Опубликована
+                    @else
+                        Не опубликована
+                    @endif
+                </td>
                 <td><a href="{{route('admin.category.edit', $category)}}" class="btn btn-secondary">Изменить</a></td>
                 <td>
                     <form action="{{route('admin.category.destroy', $category)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Удалить</button>
-                    </form></td>
+                    </form>
+                </td>
             </tr>
         @empty
             <tr>

@@ -14,14 +14,21 @@
         @forelse ($articles as $article)
             <tr>
                 <td>{{$article->title}}</td>
-                <td>{{$article->published}}</td>
+                <td>
+                    @if($article->published)
+                        Опубликована
+                    @else
+                        Не опубликована
+                    @endif
+                </td>
                 <td><a href="{{route('admin.article.edit', $article)}}" class="btn btn-secondary">Изменить</a></td>
                 <td>
                     <form action="{{route('admin.article.destroy', $article)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Удалить</button>
-                    </form></td>
+                    </form>
+                </td>
             </tr>
         @empty
             <tr>

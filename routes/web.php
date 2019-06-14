@@ -12,6 +12,8 @@
 */
 
 
+Route::get('category/{slug}', 'NewsController@category')->name('category');
+Route::get('article/{slug}', 'NewsController@article')->name('article');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'], function (){
     Route::get('/', 'MainController@index')->name('admin.index');

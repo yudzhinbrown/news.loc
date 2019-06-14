@@ -34,20 +34,20 @@
     </select>
 </div>
 <div class="form-group">
+    <label for="image">Изображение к новости </label>
+    <input name="image" type="file" class="form-control-file">
+</div>
+<div class="form-group">
     <label for="meta_description">Мета описание</label>
-    <input name="meta_description" value="{{$article->meta_description ?? ""}}" type="text" class="form-control"
-           id="meta_description"
-    >
+    <input name="meta_description" value="{{$article->meta_description ?? ""}}" type="text" class="form-control" id="meta_description">
 </div>
 <div class="form-group">
     <label for="meta_keyword">Ключевые слова</label>
-    <input name="meta_keyword" value="{{$article->meta_description ?? ""}}" type="text" class="form-control"
-           id="meta_keyword"
-    >
+    <input name="meta_keyword" value="{{$article->meta_description ?? ""}}" type="text" class="form-control" id="meta_keyword">
 </div>
 <div class="form-group">
     <label for="text">Текст новости</label>
-    <textarea class="form-control" name="text" value="{{$article->text ?? ""}}"></textarea>
+    <textarea  id="input-text-news" class="form-control" name="text" >{{$article->text ?? ""}}</textarea>
 </div>
 <div class="form-group">
     <label for="slug">Slug</label>

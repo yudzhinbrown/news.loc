@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Article;
 use App\Category;
+use App\Http\Requests\ArticleAdminRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -40,18 +41,22 @@ class ArticleController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleAdminRequest $request)
     {
+
         $article = Article::create($request->all());
 
-        dd( $article->categories());
         if ($request->input('categories')){
             $article->categories()->attach($request->input('categories'));
         }
 
+        $path = ($request->file('image')) ? $request->file('image')->store('image', 'public') : null;
 
 
-       //return redirect()->route('admin.article.index');
+        $article->img =  basename( $path);
+        $article->save();
+
+       return redirect()->route('admin.article.index');
     }
 
     /**
@@ -72,7 +77,11 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('admin.articles.edit', [
+            'article' => $article,
+            'categories' => Category::get()
+
+        ]);
     }
 
     /**
@@ -82,9 +91,23 @@ class ArticleController extends Controller
      * @param \App\Article $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(ArticleAdminRequest $request, Article $article)
     {
-        //
+        $article->update($request->except('slug'));
+
+        $article->categories()->detach();
+
+        if ($request->input('categories')){
+            $article->categories()->attach($request->input('categories'));
+        }
+
+        $path = ($request->file('image')) ? $request->file('image')->store('image', 'public') : null;
+
+
+        $article->img =  basename($path);
+        $article->save();
+
+        return redirect()->route('admin.article.index');
     }
 
     /**
@@ -95,6 +118,8 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->categories()->detach();
+        $article->delete();
+        return redirect()->route('admin.article.index');
     }
 }

@@ -6,6 +6,10 @@
 
 require('./bootstrap');
 
+$(document).ready(function () {
+    CKEDITOR.replace( 'input-text-news' );
+});
+
 window.Vue = require('vue');
 
 /**
