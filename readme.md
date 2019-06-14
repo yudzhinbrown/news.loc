@@ -7,6 +7,22 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Установка
+
+- git clone https://github.com/yudzhinbrown/news.loc news.loc
+- cd news.loc
+- composer install
+- copy .env.example .env
+- php artisan key:generate
+- Нужно изменить файл настроек под свою базу данных
+- php artisan migrate
+- php artisan db:seed
+- php artisan storage:link - для сохранения изображения 
+
+## Admin
+- e-mail: admin@gmail.com
+- password: admin
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
