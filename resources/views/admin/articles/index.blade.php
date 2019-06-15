@@ -7,7 +7,7 @@
         <tr>
             <th scope="col">Наименование</th>
             <th scope="col">Статус</th>
-            <th scope="col-2" class="text-center">Действие</th>
+            <th colspan="2" class="text-center">Действие</th>
         </tr>
         </thead>
         <tbody>
