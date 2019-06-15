@@ -38,14 +38,10 @@
         @endforelse
         </tbody>
         <tfoot>
-        <tr>
-            <td>
-                <ul class="pagination">
-                    {{$articles->links()}}
-                </ul>
-            </td>
-        </tr>
+        
         </tfoot>
     </table>
-
+ <ul class="pagination">
+                    {{$articles->links()}}
+                </ul>
 @endsection
