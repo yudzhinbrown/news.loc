@@ -2,7 +2,7 @@
 
 @section('content')
     <a class="btn btn-success float-right" href="{{route('admin.category.create')}}">Добавить категорию</a>
-    <table class="table table-borderles">
+    <table class="table table-bordered">
         <thead>
         <tr>
             <th scope="col">Наименование</th>
